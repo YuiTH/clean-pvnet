@@ -79,7 +79,7 @@ class Trainer(object):
                     batch[k] = batch[k].cuda()
 
             with torch.no_grad():
-                output, loss, loss_stats, image_stats = self.network.module(batch)
+                output, loss, loss_stats, image_stats = self.network.module(batch)  # 死在这一步，是否是因为network.eval的问题，或是dataloader的问题？
                 if evaluator is not None:
                     evaluator.evaluate(output, batch)
 

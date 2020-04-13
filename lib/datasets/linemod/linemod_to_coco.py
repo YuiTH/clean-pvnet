@@ -265,8 +265,8 @@ def _linemod_to_coco(cls, split):
     K = linemod_K
 
     model = renderer.model['pts'] / 1000
-    corner_3d = get_model_corners(model)
-    center_3d = (np.max(corner_3d, 0) + np.min(corner_3d, 0)) / 2
+    corner_3d = get_model_corners(model) # 角落点
+    center_3d = (np.max(corner_3d, 0) + np.min(corner_3d, 0)) / 2 # 算出中心点
     fps_3d = np.loadtxt(os.path.join(data_root, cls, 'farthest.txt'))
 
     model_meta = {
